@@ -1,0 +1,72 @@
+{{> navbar }}
+<!-- Header -->
+{{> landing }}
+<!-- end of header -->
+
+{{!-- integrations --}}
+{{> categories}}
+{{!-- end of integrations --}}
+
+<!-- Testimonials -->
+{{!-- {{> testimonials}} --}}
+<!-- end of testimonials -->
+
+
+<!-- Features -->
+{{!-- {{> features}} --}}
+<!-- end of features -->
+
+
+<!-- Video -->
+{{!-- {{> videoDemo}} --}}
+<!-- end of video -->
+
+
+<!-- Details 1 -->
+{{> benefitsHome}}
+<!-- end of details 2 -->
+
+<!-- Details Lightboxes -->
+{{!-- {{> features2}} --}}
+<!-- end of details lightboxes -->
+
+
+<!-- Screenshots -->
+{{!-- {{> screenshots}} --}}
+<!-- end of screenshots -->
+
+
+<!-- Download -->
+{{!-- {{> download}} --}}
+<!-- end of download -->
+
+
+<!-- Statistics -->
+{{!-- {{> statistics}} --}}
+<!-- end of statistics -->
+
+
+<!-- Contact -->
+{{> contact}}
+<!-- end of contact -->
+{{!-- chatbot integration --}}
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+<df-messenger
+  intent="Start"
+  chat-title="Restobot"
+  agent-id="2346c2b0-c8ed-488b-be32-bf7c02d8e14b"
+  language-code="es"
+  chat-icon="/images/restobot.png"
+></df-messenger>
+{{!-- end of chatbot integration --}}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+{{!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144932522-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-144932522-2');
+</script> --}}
+
+{{> footer }}

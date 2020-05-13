@@ -1,0 +1,37 @@
+<div class="pricingdiv">
+  {{#each plans}}
+    <ul class="theplan {{color}}">
+      <li class="title">
+        <b>
+          {{name}}
+        </b>
+      </li>
+      <li>
+        <p>
+          {{description}}
+        </p>
+      </li>
+      <li>
+        <b>
+          Beneficios:
+        </b>
+      </li>
+      {{#each benefits}}
+        <li>
+          {{this}}
+        </li>
+      {{/each}}
+      <li>
+        <a
+          class="pricebutton"
+          href="http://ergonomictrends.com/best-ergonomic-office-chairs-2017-reviews-buyers-guide/"
+          target="_blank"
+          rel="nofollow"
+        >
+          <span class="icon-tag"></span>
+          {{price}}
+        </a>
+      </li>
+    </ul>
+  {{/each}}
+</div>

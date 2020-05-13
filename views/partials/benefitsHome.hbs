@@ -1,0 +1,39 @@
+<section id="details" class="basic-2">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center mb-3">
+        <h2>
+          Beneficios
+        </h2>
+      </div>
+    </div>
+    {{#each benefitsHome}}
+      <div class="row my-5">
+        <div class="col-sm-6">
+          <div class="text-container">
+            <h3>
+              {{title}}
+            </h3>
+            <p>{{description}}</p>
+          </div>
+          <!-- end of text-container -->
+        </div>
+        <!-- end of col -->
+         <div class="col-sm-6 text-center {{#if (isPair @index)}}
+            order-sm-first
+            {{/if}}">
+          <img
+            class="img-fluid" 
+            width="300px"
+            src="{{img}}"
+            alt="alternative"
+          />
+        </div>
+        <!-- end of col -->
+      </div>
+    {{/each}}
+    <!-- end of row -->
+  </div>
+  <!-- end of container -->
+</section>
+<!-- end of basic-2 -->

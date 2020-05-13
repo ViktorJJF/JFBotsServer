@@ -1,0 +1,39 @@
+<section class="categories">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h2>
+          ¿A qué sector te dedicas?
+        </h2>
+      </div>
+    </div>
+    <!-- end of row -->
+    <div class="row">
+      {{#each categories}}
+        <div class="col-lg-4 mb-3">
+          <div class="card category-card">
+            <img
+              class="card-img-top img-fluid"
+              height="50px"
+              src="{{img}}"
+              alt="Categoria"
+            />
+            <div class="card-body">
+              <h5 class="card-title custom-center">
+                {{name}}
+              </h5>
+              <div class="text-center">
+                <a class="btn-solid-lg page-scroll mb-3" href="{{path}}">
+                  MÁS INFORMACIÓN
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+      <!-- end of col -->
+    </div>
+    <!-- end of row -->
+    <!-- end of container -->
+  </div>
+</section>
