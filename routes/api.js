@@ -27,6 +27,47 @@ router.get("/session/list", (req, res) => {
   });
 });
 
+//CRUD test
+router.get("/test1", (req, res) => {
+  res.json({
+    ok: true,
+    msg: "test 1 completado",
+    payload: [{
+      id: 1,
+      name: "brus 1"
+    }, {
+      id: 2,
+      name: "brus 2"
+    }]
+  });
+});
+const axios = require("axios");
+router.get("/test2", (req, res2) => {
+  console.log("EMPEZANDO A REINICIAR APP");
+  axios({
+      url: "https://api.heroku.com/apps/chatbrus/dynos",
+      method: 'delete',
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/vnd.heroku+json; version=3",
+        "Authorization": "Bearer ea2e5c5f-861b-46fc-ab95-65183c6b2c08"
+      }
+    })
+    .then(res => {
+      res2.json({
+        ok: true,
+        msg: "Reiniciado correctamente"
+      })
+
+    }).catch(err => {
+      console.log("algo salio mal...", err);
+      res2.json({
+        ok: false,
+        msg: "algo salio mal gaaa"
+      });
+    });
+});
+
 //CRUD dishes
 router.get("/dishes", dishesController.list);
 router.post("/dishes", dishesController.create);

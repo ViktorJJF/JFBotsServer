@@ -36,41 +36,41 @@ app.use(
   })
 );
 
-mongoose.connect(
-  config.DBSTRING,
-  {
-    useNewUrlParser: true,
-  },
-  (err, res) => {
-    if (err) throw err;
-    console.log("DB online ONLINE");
-  }
-);
+// mongoose.connect(
+//   config.DBSTRING,
+//   {
+//     useNewUrlParser: true,
+//   },
+//   (err, res) => {
+//     if (err) throw err;
+//     console.log("DB online ONLINE");
+//   }
+// );
 
-app.use(
-  session({
-    secret: "ijegoierjgoiemrjgoiem",
-    store: new MongoStore({
-      mongooseConnection: mongoose.connection,
-    }),
-    resave: false,
-    saveUninitialized: true,
-    vcookie: {
-      httpOnly: true,
-      maxAge: 2419200000,
-    }, // configure when sessions expires
-  })
-);
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(
+//   session({
+//     secret: "ijegoierjgoiemrjgoiem",
+//     store: new MongoStore({
+//       mongooseConnection: mongoose.connection,
+//     }),
+//     resave: false,
+//     saveUninitialized: true,
+//     vcookie: {
+//       httpOnly: true,
+//       maxAge: 2419200000,
+//     }, // configure when sessions expires
+//   })
+// );
+// app.use(passport.initialize());
+// app.use(passport.session());
 
-passport.serializeUser(function (user_id, done) {
-  done(null, user_id);
-});
+// passport.serializeUser(function (user_id, done) {
+//   done(null, user_id);
+// });
 
-passport.deserializeUser(function (user_id, done) {
-  done(null, user_id);
-});
+// passport.deserializeUser(function (user_id, done) {
+//   done(null, user_id);
+// });
 
 //routes
 app.use("/", require("./routes"));
