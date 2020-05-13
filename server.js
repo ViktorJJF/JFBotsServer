@@ -36,31 +36,31 @@ app.use(
   })
 );
 
-// mongoose.connect(
-//   config.DBSTRING,
-//   {
-//     useNewUrlParser: true,
-//   },
-//   (err, res) => {
-//     if (err) throw err;
-//     console.log("DB online ONLINE");
-//   }
-// );
+mongoose.connect(
+  config.DBSTRING,
+  {
+    useNewUrlParser: true,
+  },
+  (err, res) => {
+    if (err) throw err;
+    console.log("DB online ONLINE");
+  }
+);
 
-// app.use(
-//   session({
-//     secret: "ijegoierjgoiemrjgoiem",
-//     store: new MongoStore({
-//       mongooseConnection: mongoose.connection,
-//     }),
-//     resave: false,
-//     saveUninitialized: true,
-//     vcookie: {
-//       httpOnly: true,
-//       maxAge: 2419200000,
-//     }, // configure when sessions expires
-//   })
-// );
+app.use(
+  session({
+    secret: "ijegoierjgoiemrjgoiem",
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection,
+    }),
+    resave: false,
+    saveUninitialized: true,
+    vcookie: {
+      httpOnly: true,
+      maxAge: 2419200000,
+    }, // configure when sessions expires
+  })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 
