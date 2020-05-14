@@ -4,6 +4,10 @@ const router = express.Router();
 //Controllers
 const dishesTypesController = require("../controllers/dishesTypesController");
 const dishesController = require("../controllers/dishesController");
+const usersController = require("../controllers/usersController");
+const ordersController = require("../controllers/ordersController");
+const orderDetailsController = require("../controllers/orderDetailsController");
+const chatbotsController = require("../controllers/chatbotsController");
 
 //sessions
 router.get("/session", (req, res) => {
@@ -27,46 +31,29 @@ router.get("/session/list", (req, res) => {
   });
 });
 
-//CRUD test
-router.get("/test1", (req, res) => {
-  res.json({
-    ok: true,
-    msg: "test 1 completado",
-    payload: [{
-      id: 1,
-      name: "brus 1"
-    }, {
-      id: 2,
-      name: "brus 2"
-    }]
-  });
-});
-const axios = require("axios");
-router.get("/test2", (req, res2) => {
-  console.log("EMPEZANDO A REINICIAR APP");
-  axios({
-      url: "https://api.heroku.com/apps/chatbrus/dynos",
-      method: 'delete',
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/vnd.heroku+json; version=3",
-        "Authorization": "Bearer ea2e5c5f-861b-46fc-ab95-65183c6b2c08"
-      }
-    })
-    .then(res => {
-      res2.json({
-        ok: true,
-        msg: "Reiniciado correctamente"
-      })
+//CRUD chatbots
+router.get("/chatbots", chatbotsController.list);
+router.post("/chatbots", chatbotsController.create);
+router.put("/chatbots/:id", chatbotsController.update);
+router.delete("/chatbots/:id", chatbotsController.deletes);
 
-    }).catch(err => {
-      console.log("algo salio mal...", err);
-      res2.json({
-        ok: false,
-        msg: "algo salio mal gaaa"
-      });
-    });
-});
+//CRUD orders
+router.get("/orders", ordersController.list);
+router.post("/orders", ordersController.create);
+router.put("/orders/:id", ordersController.update);
+router.delete("/orders/:id", ordersController.deletes);
+
+//CRUD order DETAILS
+router.get("/order-details", orderDetailsController.list);
+router.post("/order-details", orderDetailsController.create);
+router.put("/order-details/:id", orderDetailsController.update);
+router.delete("/order-details/:id", orderDetailsController.deletes);
+
+//CRUD users
+router.get("/users", usersController.list);
+router.post("/users", usersController.create);
+router.put("/users/:id", usersController.update);
+router.delete("/users/:id", usersController.deletes);
 
 //CRUD dishes
 router.get("/dishes", dishesController.list);

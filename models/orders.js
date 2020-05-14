@@ -1,20 +1,25 @@
 const mongoose = require("mongoose");
 const OrderDetail = require("../models/OrderDetails.js");
-const Product = require("../models/Products.js");
-
-const middlewares = require("../mongoMiddlewares/Middlewares");
 
 let Schema = mongoose.Schema;
+
+let validStates = {
+  values: ["TODO", "DOING", "DONE"],
+  message: "{VALUE} no es un estado válido",
+};
 
 let orderSchema = new Schema(
   {
     userId: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: "Users",
       required: true,
     },
-    status: {
-      type: Boolean,
-      default: true,
+    state: {
+      type: String,
+      default: "TODO",
+      enum: validStates,
+      required: true,
     },
   },
   {
