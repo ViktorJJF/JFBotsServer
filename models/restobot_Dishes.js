@@ -6,7 +6,6 @@ let dishSchema = new Schema(
     name: {
       type: String,
       required: [true, "El nombre del plato es requerido"],
-      unique: true,
     },
     price: String,
     img: String,
@@ -14,6 +13,7 @@ let dishSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "Orders",
     },
+    description: String,
   },
   {
     timestamps: true,

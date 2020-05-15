@@ -1,4 +1,4 @@
-const Order = require("../models/Orders.js");
+const Order = require("../models/restobot_Orders.js");
 const list = (req, res) => {
   Order.find().exec((err, payload) => {
     if (err) {

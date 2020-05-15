@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const OrderDetail = require("../models/OrderDetails.js");
+const OrderDetail = require("../models/restobot_OrderDetails.js");
 
 let Schema = mongoose.Schema;
 

@@ -1,6 +1,8 @@
-const DishType = require("../models/DishesTypes.js");
+const DishType = require("../models/restobot_DishesTypes.js");
 const list = (req, res) => {
-  DishType.find().exec((err, payload) => {
+  let query = {};
+  if (req.query["is-menu"]) query.isMenu = Boolean(req.query["is-menu"]);
+  DishType.find(query).exec((err, payload) => {
     if (err) {
       return res.status(400).json({
         ok: false,

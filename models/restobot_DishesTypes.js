@@ -8,7 +8,12 @@ let dishesTypesSchema = new Schema(
       unique: true,
       required: [true, "El nombre es requerido"],
     },
+    isMenu: {
+      type: Boolean,
+      default: false,
+    },
   },
+
   {
     timestamps: true,
   }

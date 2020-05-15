@@ -1,4 +1,4 @@
-const Dish = require("../models/Dishes.js");
+const Dish = require("../models/restobot_Dishes.js");
 const list = (req, res) => {
   Dish.find().exec((err, payload) => {
     if (err) {
