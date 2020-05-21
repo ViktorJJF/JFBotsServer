@@ -31,6 +31,9 @@ router.get("/session/list", (req, res) => {
   });
 });
 
+router.get("/test23", (req, res) => {
+  return res.status(200).json({ ok: true, msg: "GET hecho" });
+});
 //CRUD chatbots
 router.get("/chatbots", chatbotsController.list);
 router.post("/chatbots", chatbotsController.create);
