@@ -101,14 +101,19 @@ router.get("/preguntas-frecuentes", (req, res) => {
 });
 router.get("/precios", (req, res) => {
   let plans = [
-    // {
-    //     id: 1,
-    //     name: "Prueba gratis",
-    //     benefits: ["- Chatbot funcional en Facebook Messenger", "- Recolección básica de datos", "Tablero de control", "Edición de intents"],
-    //     price: "Gratis",
-    //     color: "bg-primary",
-    //     description: "Prueba gratis por 30 días tu primer chatbot"
-    // },
+    {
+      id: 1,
+      name: "Ayuda COVID-19",
+      benefits: [
+        "- Chatbot funcional en las plataformas que elija",
+        "Responde preguntas frecuentes",
+        "",
+      ],
+      price: "Gratis",
+      color: "bg-primary",
+      description:
+        "⚠️ Debido a la conyuntura vivida, se creó este plan para apoyar la reactivación de la economía.",
+    },
     {
       id: 2,
       name: "Emprendedores",
@@ -150,10 +155,55 @@ router.get("/precios", (req, res) => {
 });
 
 router.get("/red-social", (req, res) => {
-  res.render("socialNetwork");
+  let socialNetworks = [
+    {
+      id: "1",
+      name: "Facebook",
+      icon: "fab fa-facebook-f",
+      description:
+        "La herramienta está entre las favoritas del los jóvenes por su versatilidad en su diseño, el cual brinda comodidad a los jóvenes al momento de expresarse con sus amistades.",
+      requirements: ["Nombre de la organziación"],
+      considerations: [
+        "El proceso de revisión es exhaustivo",
+        "Puede tardar 1 mes",
+      ],
+      additionalInfo: ["www.google.com.pe"],
+    },
+    {
+      id: "2",
+      name: "Telegram",
+      icon: "fab fa-telegram",
+      description:
+        "Telegram es una plataforma de mensajería y VOIP. La aplicación está enfocada en la mensajería instantánea, el envío de varios archivos y la comunicación en masa.",
+      requirements: ["Nombre de la organziación"],
+      considerations: [
+        "El proceso de revisión es exhaustivo",
+        "Puede tardar 1 mes",
+      ],
+      additionalInfo: ["www.google.com.pe"],
+    },
+    {
+      id: "3",
+      name: "WhatsApp",
+      icon: "fab fa-whatsapp",
+      description:
+        "WhatsApp Messenger es una aplicación de mensajería instantánea para teléfonos inteligentes, en la que se envían y reciben mensajes mediante Internet, así como imágenes, vídeos, audios, grabaciones de audio, entre otras funciones.",
+      requirements: ["Nombre de la organziación"],
+      considerations: [
+        "El proceso de revisión es exhaustivo",
+        "Puede tardar 1 mes",
+      ],
+      additionalInfo: ["www.google.com.pe"],
+    },
+  ];
+  res.render("socialNetwork", { socialNetworks });
 });
 router.get("/solicitud", (req, res) => {
-  res.render("chatbotRequestForm");
+  let query = req.query;
+  let facebook = query.Facebook === "on" ? true : false;
+  let telegram = query.Telegram === "on" ? true : false;
+  let whatsapp = query.WhatsApp === "on" ? true : false;
+  res.render("chatbotRequestForm", { facebook, telegram, whatsapp });
 });
 
 module.exports = router;

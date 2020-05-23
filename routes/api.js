@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const nodemailer = require("nodemailer");
 
 //Controllers
 const dishesTypesController = require("../controllers/dishesTypesController");
@@ -69,5 +70,29 @@ router.get("/dishes-types", dishesTypesController.list);
 router.post("/dishes-types", dishesTypesController.create);
 router.put("/dishes-types/:id", dishesTypesController.update);
 router.delete("/dishes-types/:id", dishesTypesController.deletes);
+
+router.get("/email", (req, res) => {
+  let transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "rodrigo.diazranilla@gmail.com",
+      pass: "phoneypeople",
+    },
+  });
+  let mailOptions = {
+    from: "rodrigo.diazranilla@gmail.com",
+    to: "vj.jimenez96@gmail.com",
+    subject: "Testing and testing",
+    text: "Gaa+aea=gaea",
+  };
+  transporter.sendMail(mailOptions, (err, data) => {
+    if (err) {
+      console.log("algo salio mal: ", err);
+    } else {
+      console.log("correo enviado prro!");
+    }
+  });
+  res.send("aea llama");
+});
 
 module.exports = router;

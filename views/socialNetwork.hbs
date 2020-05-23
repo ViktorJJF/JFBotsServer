@@ -3,68 +3,60 @@
   <div class="header-content">
     <div class="container">
       <h2 class="text-center">Selecciona las plataformas de mensajería</h2>
+      <form action="/solicitud" method="get">
       <div class="row text-center">
-        <div class="col-lg-4 mb-3">
-          <input type="checkbox" id="cbtest" />
-          <label for="cbtest" class="check-box"></label>
-          <h5><i class="fab fa-facebook-f custom-icon"></i>Facebook</h5>
+          {{#each socialNetworks }}
+           <div class="col-lg-4 mb-3">
+          <input type="checkbox" id="cbtest{{id}}" name="{{name}}" />
+          <label for="cbtest{{id}}" class="check-box"></label>
+          <h5><i class="{{icon}}"></i> {{name}}</h5>
           <p>
-            La herramienta está entre las favoritas del los jóvenes por su versatilidad en su diseño, el cual brinda
-            comodidad a los jóvenes al momento de expresarse con sus amistades.
+            {{description}}
           </p>
           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Información
-          </button>
-
+          <a data-toggle="modal" data-target="#exampleModal{{id}}" href="#" role="button">Ver consideraciones</a>
           <!-- Modal -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          <div class="modal fade" id="exampleModal{{id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Título del modal</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">Chatbot en {{name}}</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
                 <div class="modal-body">
-                                   <h6>Requisitos</h6>
-                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique, quas.</p>
+                  <h6>Requisitos</h6>
+                  <ul>
+                    {{#each requirements }}
+                    <li>{{this}}</li>
+                    {{/each}}
+                  </ul>
                   <h6>Otras consideraciones</h6>
-                  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo commodi, architecto minima veniam iste quas!</p>
+                  <ul>
+                    {{#each considerations }}
+                    <li>{{this}}</li>
+                    {{/each}}
+                  </ul>
+                  <h6>Puedes encontrar información adicional en:</h6>
+                  <ul>
+                    {{#each additionalInfo }}
+                    <li>{{this}}</li>
+                    {{/each}}
+                  </ul>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Entendido!</button>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-lg-4 mb-3">
-          <input type="checkbox" id="cbtest2" />
-          <label for="cbtest2" class="check-box"></label>
-          <h5><i class="fab fa-telegram"></i> Telegram</h5>
-          <p>
-            Telegram es una plataforma de mensajería y VOIP. La aplicación está enfocada en la mensajería instantánea,
-            el envío de varios archivos y la comunicación en masa.
-          </p>
-          <a href="">Ver consideraciones</a>
-        </div>
-        <div class="col-lg-4 mb-3">
-          <input type="checkbox" id="cbtest3" />
-          <label for="cbtest3" class="check-box"></label>
-          <h5><i class="fab fa-whatsapp"></i> WhatsApp</h5>
-          <p>
-            WhatsApp Messenger es una aplicación de mensajería instantánea para teléfonos inteligentes, en la que se
-            envían y reciben mensajes mediante Internet, así como imágenes, vídeos, audios, grabaciones de audio, entre
-            otras funciones.
-          </p>
-          <a href="" class="mx-3">Ver consideraciones</a>
-        </div>
+        </div> 
+          {{/each}}
       </div>
-      <a type="button" class="btn btn-success btn-lg btn-block mt-3" href="/solicitud">Continuar</a>
+       <button type="submit" class="btn btn-success btn-lg btn-block mt-3">Continuar</button>
+      </form>
     </div>
   </div>
 </header>
