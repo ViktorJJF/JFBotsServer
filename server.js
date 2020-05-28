@@ -15,6 +15,9 @@ const mongoose = require("mongoose");
 
 const port = process.env.PORT || 3000;
 
+//dotenv
+require("dotenv").config();
+
 app.use(express.static(__dirname + "/public"));
 //Express HBS engine
 app.set("view engine", "hbs");

@@ -252,7 +252,7 @@
       if (event.isDefaultPrevented()) {
         // handle the invalid form...
         cformError();
-        csubmitMSG(false, "Please fill all fields!");
+        csubmitMSG(false, "Por favor, completa todos los campos");
       } else {
         // everything looks good!
         event.preventDefault();
@@ -268,7 +268,7 @@
     var terms = $("#cterms").val();
     $.ajax({
       type: "POST",
-      url: "php/contactform-process.php",
+      url: "/api/email",
       data:
         "name=" +
         name +
@@ -324,7 +324,7 @@
       if (event.isDefaultPrevented()) {
         // handle the invalid form...
         pformError();
-        psubmitMSG(false, "Please fill all fields!");
+        psubmitMSG(false, "Por favor, completa todos los campos");
       } else {
         // everything looks good!
         event.preventDefault();

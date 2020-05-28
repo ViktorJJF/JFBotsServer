@@ -71,19 +71,22 @@ router.post("/dishes-types", dishesTypesController.create);
 router.put("/dishes-types/:id", dishesTypesController.update);
 router.delete("/dishes-types/:id", dishesTypesController.deletes);
 
-router.get("/email", (req, res) => {
+router.post("/email", (req, res) => {
+  let body = req.body;
+  console.log("llego esta data: ", body);
+  let { from, subject, text } = { body };
   let transporter = nodemailer.createTransport({
-    service: "gmail",
+    service: process.env.EMAIL_HOST,
     auth: {
-      user: "rodrigo.diazranilla@gmail.com",
-      pass: "phoneypeople",
+      user: process.env.EMAIL_CUSTOMERS_USER,
+      pass: process.env.EMAIL_PASS,
     },
   });
   let mailOptions = {
-    from: "rodrigo.diazranilla@gmail.com",
+    from: process.env.EMAIL_CUSTOMERS_USER,
     to: "vj.jimenez96@gmail.com",
-    subject: "Testing and testing",
-    text: "Gaa+aea=gaea",
+    subject,
+    text,
   };
   transporter.sendMail(mailOptions, (err, data) => {
     if (err) {
@@ -92,7 +95,7 @@ router.get("/email", (req, res) => {
       console.log("correo enviado prro!");
     }
   });
-  res.send("aea llama");
+  res.send("Correo enviado correctamente. ¡Gracias!");
 });
 
 module.exports = router;
