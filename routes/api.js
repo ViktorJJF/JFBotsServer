@@ -83,10 +83,10 @@ router.post("/email", (req, res) => {
     },
   });
   let mailOptions = {
-    from: process.env.EMAIL_CUSTOMERS_USER,
+    from: "viktor.developer96@gmail.com",
     to: "vj.jimenez96@gmail.com",
-    subject,
-    text,
+    subject: "subject brus",
+    text: "gaaaaa",
   };
   transporter.sendMail(mailOptions, (err, data) => {
     if (err) {
